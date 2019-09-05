@@ -14,6 +14,12 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+            <groupId>org.mortbay.jetty.alpn</groupId>
+            <artifactId>alpn-boot</artifactId>
+            <version>8.1.9.v20160720</version>
+            <scope>runtime</scope>
+        </dependency>
   </dependencies>
   <build>
     <plugins>
