@@ -2,12 +2,11 @@ pipeline {
     agent {
         docker {
             image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2 -e NEXUS_VERSION = "nexus3",NEXUS_URL = "127.0.0.1:8081",NEXUS_REPOSITORY = "poc-maven",NEXUS_CREDENTIAL_ID = "nexus-credentials"'
-                       
-                    }
+            args '-v /root/.m2:/root/.m2'
+        }
     }
     stages {
-        stage('Build') 
+        stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
@@ -22,7 +21,7 @@ pipeline {
                 }
             }
         }
-            stage('Deliver') {
+        stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
